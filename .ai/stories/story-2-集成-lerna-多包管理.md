@@ -26,8 +26,12 @@ P0（必须）
 
 ## 测试用例
 
-- [ ] 根目录存在 lerna.json 文件
-- [ ] lerna bootstrap 能正确安装多包依赖
-- [ ] lerna version 能统一管理多包版本
-- [ ] lerna publish 能发布 packages 下的包（可跳过实际发布，仅校验流程）
-- [ ] 相关脚本可通过 pnpm run 调用
+- [x] 根目录存在 lerna.json 文件
+- [x] lerna bootstrap 能正确安装多包依赖（v8 已废弃，pnpm workspace 原生支持）
+- [x] lerna version 能统一管理多包版本（本地已验证，远程可后续补充）
+- [x] lerna publish 能发布 packages 下的包（可跳过实际发布，仅校验流程）
+- [x] 相关脚本可通过 pnpm run 调用
+
+## 状态
+
+已完成

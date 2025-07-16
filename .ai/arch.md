@@ -63,6 +63,7 @@ flowchart TD
 - Storybook 或 VitePress（文档与演示）
 - husky + lint-staged（提交前校验）
 - CI/CD（GitHub Actions/其他）
+- **CSS 方案：CSS-in-JS（推荐 emotion，禁止传统 CSS/scss/less 文件）**
 
 ## 五、关键 API 设计
 
