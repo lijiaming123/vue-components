@@ -6,6 +6,7 @@
     "@emotion/styled": "^11.14.1",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
+    "element-plus": "^2.10.4",
     "eslint": "8.57.0",
     "eslint-plugin-vue": "8.7.1",
     "lerna": "^8.2.3",
