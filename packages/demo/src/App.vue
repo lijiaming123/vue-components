@@ -2,8 +2,8 @@
 import { ref, reactive } from "vue";
 // 假设 monorepo 内部可直接这样引入
 import { DaodaConfigProvider } from "@daoda-component/config";
-import Button from "@daoda-component/components/button/src/index";
-import DaodaSelect from "@daoda-component/components/select/src/Select.vue";
+import Button from "@daoda-component/components/button";
+import { Select as DaodaSelect } from "@daoda-component/components/select";
 
 const theme = reactive({
   primaryColor: "#1677ff",
