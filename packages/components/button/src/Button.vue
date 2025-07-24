@@ -2,6 +2,7 @@
 import { ElButton } from "element-plus";
 import type { ButtonProps as ElButtonProps } from "element-plus";
 import { defineProps, defineEmits, useSlots, computed, ref } from "vue";
+import { throttle } from "@daoda-component/utils";
 
 /**
  * DaodaButton 组件
@@ -38,22 +39,9 @@ const props = defineProps<DaodaButtonProps>();
 const emit = defineEmits<["click", (e: MouseEvent) => void]>();
 const slots = useSlots();
 
-const isThrottling = ref(false);
-
-/**
- * 处理点击事件，支持节流
- * @param e 鼠标事件
- */
-const handleClick = (e: MouseEvent) => {
-  if (props.throttle) {
-    if (isThrottling.value) return;
-    isThrottling.value = true;
-    setTimeout(() => {
-      isThrottling.value = false;
-    }, props.throttleTime ?? 800);
-  }
-  emit("click", e);
-};
+const handleClick = props.throttle
+  ? throttle((e: MouseEvent) => emit("click", e), props.throttleTime ?? 800)
+  : (e: MouseEvent) => emit("click", e);
 
 /**
  * 计算 class
