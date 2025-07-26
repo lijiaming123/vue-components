@@ -1,0 +1,17 @@
+{
+  "name": "@daoda-component/components/button",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "types": "src/index.ts",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
+    }
+  },
+  "dependencies": {
+    "vue": "^3.0.0",
+    "element-plus": "^2.9.6"
+  }
+}
