@@ -2,7 +2,7 @@ import { defineComponent, h, PropType, computed } from "vue";
 import { useDaodaConfig } from "@daoda-component/config";
 import { ElButton } from "element-plus";
 
-const Button = defineComponent({
+const DaodaButton = defineComponent({
   name: "DaodaButton",
   props: {
     label: String,
@@ -27,5 +27,5 @@ const Button = defineComponent({
   },
 });
 
-export default Button;
+export default DaodaButton;
 export * from "element-plus"; // 如果你想透传类型等
