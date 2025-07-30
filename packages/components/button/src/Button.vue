@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ElButton } from "element-plus";
 import type { ButtonProps as ElButtonProps } from "element-plus";
-import { defineProps, defineEmits, useSlots, computed, ref } from "vue";
+import { defineProps, defineEmits, useSlots, computed, watch, ref } from "vue";
 import { throttle } from "@daoda-component/utils";
 
 /**
@@ -32,6 +32,7 @@ export interface DaodaButtonProps extends /* @vue-ignore */ ElButtonProps {
 }
 
 const props = defineProps<DaodaButtonProps>();
+
 /**
  * 点击事件，参数为原生 MouseEvent
  * @event click
@@ -39,9 +40,25 @@ const props = defineProps<DaodaButtonProps>();
 const emit = defineEmits<["click", (e: MouseEvent) => void]>();
 const slots = useSlots();
 
-const handleClick = props.throttle
-  ? throttle((e: MouseEvent) => emit("click", e), props.throttleTime ?? 800)
-  : (e: MouseEvent) => emit("click", e);
+// 缓存 throttle 包装函数，支持动态 throttle/throttleTime
+const throttledFn = ref<(e: MouseEvent) => void>();
+
+function baseClick(e: MouseEvent) {
+  emit("click", e);
+}
+
+function updateThrottledFn() {
+  console.log(props);
+  if (props.throttle) {
+    throttledFn.value = throttle(baseClick, props.throttleTime ?? 800);
+  } else {
+    throttledFn.value = baseClick;
+  }
+}
+
+watch(() => [props.throttle, props.throttleTime], updateThrottledFn, {
+  immediate: true,
+});
 
 /**
  * 计算 class
@@ -56,7 +73,7 @@ const classes = computed(() => [
     DaodaButton 组件
     @slot 默认插槽，按钮内容
   -->
-  <ElButton v-bind="props" :class="classes" @click="handleClick">
+  <ElButton v-bind="props" :class="classes" @click="throttledFn">
     <slot />
   </ElButton>
 </template>
