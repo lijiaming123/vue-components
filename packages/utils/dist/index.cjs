@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});function u(e,n=800){let t=0;return function(...o){const i=Date.now();i-t>n&&(t=i,e.apply(this,o))}}function l(e,n=300){let t=null;return function(...o){t&&clearTimeout(t),t=setTimeout(()=>{e.apply(this,o)},n)}}exports.debounce=l;exports.throttle=u;
