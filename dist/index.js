@@ -1,6 +1,6 @@
-import { defineComponent as f, useSlots as p, ref as $, watch as b, computed as h, createBlock as d, openBlock as s, unref as i, mergeProps as m, withCtx as c, renderSlot as C, toHandlers as D, createElementBlock as k, createCommentVNode as B, Fragment as T, renderList as y, reactive as S, provide as E, inject as F } from "vue";
-import { ElButton as P, ElSelect as V, ElOption as w } from "element-plus";
-function O(l, r = 800) {
+import { defineComponent as f, useSlots as p, ref as b, watch as $, computed as h, createBlock as d, openBlock as s, unref as u, mergeProps as m, withCtx as c, renderSlot as v, toHandlers as k, createElementBlock as B, createCommentVNode as T, Fragment as y, renderList as S, reactive as E, provide as F, inject as V } from "vue";
+import { ElButton as w, ElSelect as O, ElOption as P } from "element-plus";
+function C(l, r = 800) {
   let e = 0;
   return function(...a) {
     const n = Date.now();
@@ -9,7 +9,7 @@ function O(l, r = 800) {
 }
 const j = {
   name: "DaodaButton"
-}, I = /* @__PURE__ */ f({
+}, A = /* @__PURE__ */ f({
   ...j,
   props: {
     throttle: { type: Boolean },
@@ -20,33 +20,33 @@ const j = {
   setup(l, { emit: r }) {
     const e = l, a = r;
     p();
-    const n = $();
-    function o(u) {
-      a("click", u);
+    const n = b();
+    function o(i) {
+      a("click", i);
     }
     function t() {
-      console.log(e), e.throttle ? n.value = O(o, e.throttleTime ?? 800) : n.value = o;
+      console.log(e), e.throttle ? n.value = C(o, e.throttleTime ?? 800) : n.value = o;
     }
-    b(() => [e.throttle, e.throttleTime], t, {
+    $(() => [e.throttle, e.throttleTime], t, {
       immediate: !0
     });
-    const v = h(() => [
+    const D = h(() => [
       e.prefixCls ? `${e.prefixCls}-button` : ""
     ]);
-    return (u, N) => (s(), d(i(P), m(e, {
-      class: v.value,
+    return (i, L) => (s(), d(u(w), m(e, {
+      class: D.value,
       onClick: n.value
     }), {
       default: c(() => [
-        C(u.$slots, "default")
+        v(i.$slots, "default")
       ]),
       _: 3
     }, 16, ["class", "onClick"]));
   }
-}), A = {
+}), N = {
   name: "DaodaSelect"
-}, K = /* @__PURE__ */ f({
-  ...A,
+}, G = /* @__PURE__ */ f({
+  ...N,
   props: {
     options: {}
   },
@@ -61,7 +61,7 @@ const j = {
   ],
   setup(l, { emit: r }) {
     const e = l, a = p();
-    return (n, o) => (s(), d(i(V), m(e, D(n.$attrs), {
+    return (n, o) => (s(), d(u(O), m(e, k(n.$attrs), {
       "onUpdate:modelValue": o[0] || (o[0] = (t) => n.$emit("update:modelValue", t)),
       onChange: o[1] || (o[1] = (t) => n.$emit("change", t)),
       onBlur: o[2] || (o[2] = (t) => n.$emit("blur", t)),
@@ -71,18 +71,18 @@ const j = {
       onClear: o[6] || (o[6] = (t) => n.$emit("clear"))
     }), {
       default: c(() => [
-        e.options && !i(a).default ? (s(!0), k(T, { key: 0 }, y(e.options, (t) => (s(), d(i(w), m({
+        e.options && !u(a).default ? (s(!0), B(y, { key: 0 }, S(e.options, (t) => (s(), d(u(P), m({
           key: t.value
         }, { ref_for: !0 }, t, {
           label: t.label,
           value: t.value
-        }), null, 16, ["label", "value"]))), 128)) : B("", !0),
-        C(n.$slots, "default")
+        }), null, 16, ["label", "value"]))), 128)) : T("", !0),
+        v(n.$slots, "default")
       ]),
       _: 3
     }, 16));
   }
-}), g = Symbol("DaodaThemeConfig"), L = f({
+}), g = Symbol("DaodaThemeConfig"), H = f({
   name: "DaodaConfigProvider",
   props: {
     /**
@@ -94,14 +94,14 @@ const j = {
     }
   },
   setup(l, { slots: r }) {
-    const e = S(l.theme);
-    return E(g, e), () => r.default?.();
+    const e = E(l.theme);
+    return F(g, e), () => r.default?.();
   }
 });
-function R() {
-  return F(g, {});
+function I() {
+  return V(g, {});
 }
-function U(l, r = 300) {
+function K(l, r = 300) {
   let e = null;
   return function(...a) {
     e && clearTimeout(e), e = setTimeout(() => {
@@ -110,19 +110,19 @@ function U(l, r = 300) {
   };
 }
 const Y = {
-  Button,
-  Select,
-  DaodaConfigProvider,
-  useDaodaConfig,
-  throttle,
-  debounce
+  DdButton: A,
+  DdSelect: G,
+  DaodaConfigProvider: H,
+  useDaodaConfig: I,
+  throttle: C,
+  debounce: K
 };
 export {
-  I as Button,
-  L as DaodaConfigProvider,
-  K as Select,
-  U as debounce,
+  H as DaodaConfigProvider,
+  A as DdButton,
+  G as DdSelect,
+  K as debounce,
   Y as default,
-  O as throttle,
-  R as useDaodaConfig
+  C as throttle,
+  I as useDaodaConfig
 };

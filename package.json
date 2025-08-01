@@ -1,10 +1,10 @@
 {
   "name": "daoda-component-core",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "基于 Vue3 + TypeScript 的企业级组件库",
   "type": "module",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist",

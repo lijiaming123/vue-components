@@ -35,12 +35,12 @@ pnpm add daoda-component-core
 
 ```typescript
 import { createApp } from "vue";
-import { Button, Select, DaodaConfigProvider } from "daoda-component-core";
+import { DdButton, DdSelect, DaodaConfigProvider } from "daoda-component-core";
 
 const app = createApp(App);
 
-app.component("DaodaButton", Button);
-app.component("DaodaSelect", Select);
+app.component("dd-button", DdButton);
+app.component("dd-select", DdSelect);
 
 app.mount("#app");
 ```
@@ -48,8 +48,8 @@ app.mount("#app");
 ### 按需引入
 
 ```typescript
-import { Button } from "daoda-component-core";
-import { Select } from "daoda-component-core";
+import { DdButton } from "daoda-component-core";
+import { DdSelect } from "daoda-component-core";
 import { DaodaConfigProvider } from "daoda-component-core";
 import { throttle } from "daoda-component-core";
 ```
@@ -61,21 +61,21 @@ import { throttle } from "daoda-component-core";
 ```vue
 <template>
   <DaodaConfigProvider :theme="theme">
-    <Button type="primary" @click="handleClick">主要按钮</Button>
-    <Button
+    <dd-button type="primary" @click="handleClick">主要按钮</dd-button>
+    <dd-button
       type="success"
       :throttle="true"
       :throttle-time="1000"
       @click="handleThrottleClick"
     >
       节流按钮
-    </Button>
+    </dd-button>
   </DaodaConfigProvider>
 </template>
 
 <script setup lang="ts">
 import { reactive } from "vue";
-import { Button, DaodaConfigProvider } from "daoda-component-core";
+import { DdButton, DaodaConfigProvider } from "daoda-component-core";
 
 const theme = reactive({
   primaryColor: "#1677ff",
@@ -97,7 +97,7 @@ const handleThrottleClick = () => {
 
 ```vue
 <template>
-  <DaodaSelect
+  <dd-select
     v-model="value"
     :options="options"
     placeholder="请选择"
@@ -107,7 +107,7 @@ const handleThrottleClick = () => {
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { Select } from "daoda-component-core";
+import { DdSelect } from "daoda-component-core";
 
 const value = ref("a");
 const options = [
