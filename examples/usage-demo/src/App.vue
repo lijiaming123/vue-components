@@ -46,6 +46,20 @@
           />
           <span class="selected-value">当前选中: {{ selectValue }}</span>
         </div>
+
+        <div class="demo-row">
+          <h3>国家选择器示例</h3>
+        </div>
+        <div class="demo-row">
+          <Select
+            v-model="countryValue"
+            :country-selector="true"
+            placeholder="请选择国家或地区"
+            style="width: 300px"
+            filterable
+          />
+          <span class="selected-value">当前选中: {{ countryValue }}</span>
+        </div>
       </section>
 
       <section class="section">
@@ -98,6 +112,9 @@ const selectOptions = [
   { label: "选项C", value: "c" },
   { label: "禁用选项", value: "d", disabled: true },
 ];
+
+// 国家选择器
+const countryValue = ref("");
 
 // 防抖示例
 const searchText = ref("");

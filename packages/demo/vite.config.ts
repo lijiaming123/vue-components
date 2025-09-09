@@ -6,9 +6,15 @@ export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
-      "@daoda-component/config": resolve(__dirname, "../config"),
-      "@daoda-component/components/button": resolve(__dirname, "../components/button"),
-      "@daoda-component/components/select": resolve(__dirname, "../components/select"),
+      "@daoda-component/config": resolve(__dirname, "../config/src"),
+      "@daoda-component/components/button": resolve(
+        __dirname,
+        "../components/button/src"
+      ),
+      "@daoda-component/components/select": resolve(
+        __dirname,
+        "../components/select/src"
+      ),
     },
   },
   server: {

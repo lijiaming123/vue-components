@@ -47,7 +47,12 @@ function toggleTheme() {
       >
 
       <h2 style="margin-top: 32px">DaodaSelect 测试</h2>
-      <DaodaSelect v-model="value" :options="options" style="width: 200px" />
+      <DaodaSelect
+        v-model="value"
+        :country-selector="true"
+        :options="options"
+        style="width: 200px"
+      />
       <div style="margin-top: 12px">当前选中：{{ value }}</div>
     </div>
   </DaodaConfigProvider>

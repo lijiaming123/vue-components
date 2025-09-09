@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { ElSelect, ElOption } from "element-plus";
-import type {
-  SelectProps as ElSelectProps,
-  OptionProps as ElOptionProps,
-} from "element-plus";
-import { defineProps, defineEmits, useSlots } from "vue";
+import type { SelectProps as ElSelectProps } from "element-plus";
+import { defineProps, defineEmits, useSlots, computed } from "vue";
+import { countries } from "./countries";
 
 /**
  * DaodaSelect 组件
@@ -15,7 +13,7 @@ import { defineProps, defineEmits, useSlots } from "vue";
  * @example
  * <DaodaSelect v-model="value" :options="[{label: 'A', value: 'a'}]" />
  */
-export interface DaodaSelectOption extends Partial<ElOptionProps> {
+export interface DaodaSelectOption {
   label: string;
   value: string | number;
   disabled?: boolean;
@@ -26,6 +24,11 @@ export interface DaodaSelectProps extends /* @vue-ignore */ ElSelectProps {
    * 选项列表（简写）
    */
   options?: DaodaSelectOption[];
+  /**
+   * 是否启用国家选择器模式
+   * 当为true时，自动使用全球国家和地区数据作为选项
+   */
+  countrySelector?: boolean;
 }
 
 const props = defineProps<DaodaSelectProps>();
@@ -39,13 +42,25 @@ const emit = defineEmits([
   "clear",
 ]);
 const slots = useSlots();
+
+// 计算最终的选项列表
+const finalOptions = computed(() => {
+  if (props.countrySelector) {
+    return countries.map((country) => ({
+      label: country.label,
+      value: country.value,
+      disabled: false,
+    }));
+  }
+  return props.options || [];
+});
 </script>
 
 <template>
   <ElSelect
     v-bind="props"
     v-on="$attrs"
-    @update:modelValue="$emit('update:modelValue', $event)"
+    @update:model-value="$emit('update:modelValue', $event)"
     @change="$emit('change', $event)"
     @blur="$emit('blur', $event)"
     @focus="$emit('focus', $event)"
@@ -53,9 +68,9 @@ const slots = useSlots();
     @remove-tag="$emit('remove-tag', $event)"
     @clear="$emit('clear')"
   >
-    <template v-if="props.options && !slots.default">
+    <template v-if="finalOptions.length > 0 && !slots.default">
       <ElOption
-        v-for="item in props.options"
+        v-for="item in finalOptions"
         :key="item.value"
         v-bind="item"
         :label="item.label"
