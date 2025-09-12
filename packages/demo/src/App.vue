@@ -22,9 +22,9 @@ function toggleTheme() {
   theme.borderRadius = theme.borderRadius === "6px" ? "20px" : "6px";
 }
 
-// function handleClick() {
-//   console.log("click");
-// }
+function handleClick() {
+  console.log("click");
+}
 </script>
 
 <template>
