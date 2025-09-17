@@ -51,6 +51,32 @@
   <DaodaSelect v-model="country" :country-selector="true" />
   ```
 
+### packages/components/schema-form/ - 高级表单组件
+
+**作用**: 基于 JSON Schema 的动态表单生成器
+
+- **文件结构**:
+  - `src/SchemaForm.vue` - 表单组件主文件
+  - `src/types.ts` - 类型定义
+  - `src/renderers.ts` - 字段渲染器
+  - `src/linkage.ts` - 联动规则处理
+  - `src/validator.ts` - 表单校验
+  - `src/index.ts` - 导出文件
+  - `README.md` - 使用文档
+  - `examples.md` - 示例代码
+- **特性**:
+  - JSON Schema 驱动
+  - 动态字段显示/隐藏
+  - 字段联动规则
+  - 多种布局支持（grid/flex）
+  - 内置校验规则
+  - 自定义渲染器
+  - 支持16种字段类型
+- **使用示例**:
+  ```vue
+  <SchemaForm :schema="formSchema" v-model="formData" @submit="handleSubmit" />
+  ```
+
 ## 🔧 开发规范
 
 ### 组件开发

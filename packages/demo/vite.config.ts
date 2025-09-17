@@ -15,6 +15,10 @@ export default defineConfig({
         __dirname,
         "../components/select/src"
       ),
+      "@daoda-component/components/schema-form": resolve(
+        __dirname,
+        "../components/schema-form/src"
+      ),
     },
   },
   server: {

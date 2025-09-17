@@ -59,6 +59,7 @@ const finalOptions = computed(() => {
 <template>
   <ElSelect
     v-bind="props"
+    :filterable="true"
     v-on="$attrs"
     @update:model-value="$emit('update:modelValue', $event)"
     @change="$emit('change', $event)"

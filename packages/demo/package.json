@@ -11,6 +11,7 @@
   "dependencies": {
     "@daoda-component/components/button": "workspace:*",
     "@daoda-component/components/select": "workspace:*",
+    "@daoda-component/components/schema-form": "workspace:*",
     "@daoda-component/config": "workspace:*",
     "element-plus": "^2.0.0",
     "vue": "^3.5.18"

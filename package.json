@@ -16,7 +16,7 @@
   "scripts": {
     "dev": "pnpm --filter demo dev",
     "build": "pnpm run build:components && pnpm run build:config && pnpm run build:utils && pnpm run build:core",
-    "build:components": "pnpm --filter daoda-button build && pnpm --filter daoda-select build",
+    "build:components": "pnpm --filter daoda-button build && pnpm --filter daoda-select build && pnpm --filter daoda-schema-form build",
     "build:config": "pnpm --filter daoda-config build",
     "build:utils": "pnpm --filter daoda-utils build",
     "build:core": "vite build",
